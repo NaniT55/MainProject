@@ -1,0 +1,642 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ఆగ్రిటెక్ఫ్యూజన్</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    
+    <!-- Google Web Fonts -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVapcdwQrjOhfAhDdUeXOnEhjMcyaXEg8&libraries=places"></script>
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'farmer/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'farmer/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'farmer/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- Template Stylesheet -->
+    <link href="{% static 'farmer/css/style.css' %}" rel="stylesheet">
+    <style>
+        .navbar-nav a.nav-item.nav-link,
+        .navbar-nav .nav-item.dropdown a.nav-link.dropdown-toggle {
+            color: black !important;
+        }
+        .custom-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 15px;
+            padding: 10px 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .custom-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        
+        
+        .custom-form label {
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .custom-form input[type="text"],
+        .custom-form input[type="email"],
+        .custom-form input[type="tel"],
+        .custom-form select,
+        .custom-form textarea {
+            width: 100%;
+            padding: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        
+        .custom-form input[type="text"]:focus,
+        .custom-form input[type="email"]:focus,
+        .custom-form input[type="tel"]:focus,
+        .custom-form select:focus,
+        .custom-form textarea:focus {
+            border-color: #007bff;
+        }
+        
+        .custom-form textarea {
+            resize: vertical;
+        }
+        
+        .custom-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-form button:hover {
+            background-color: #0056b3;
+        }
+        .accordion {
+            margin-top: 20px;
+        }
+        
+        .accordion-item {
+            margin-bottom: 20px;
+        }
+        
+        .accordion-button {
+            background-color: #82db34;
+            color: #fff;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .accordion-button:hover {
+            background-color: #297fb9d6;
+        }
+        
+        .accordion-body {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .single-product-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #272626;
+        }
+        #languageSwitchBtn {
+            position: fixed;
+            bottom: 40px;
+            left: 25px;
+            border-radius: 50%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            box-shadow:0 3px 10px rgba(132,132,132,0.7)
+        }
+        
+        #languageModal {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        
+        .languageOption {
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">లోడింగ్...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+        
+        
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="m-0 text-primary"><img src="{% static 'farmer/img/logo.png' %}" class="mx-3" alt="AgriTechFusion Logo">ఆగ్రిటెక్ఫ్యూజన్</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="{% url 'dashboard' %}" class="nav-item nav-link ">డాష్బోర్డ్</a>
+                        <a href="" class="nav-item nav-link active">ఎక్స్పర్ట్ హెల్ప్ డెస్క్</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span class="">నా ఖాతా</span></a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'cropdisease' %}" class="dropdown-item ">పురుగు రోగం గుర్తింపు</a>
+                                <a href="{% url 'farmer_appointments' %}" class="dropdown-item">అపాయింట్మెంట్స్</a>
+                                <a href="{% url 'farmer_feedback' %}" class="dropdown-item">ఫీడ్‌బ్యాక్</a>
+                                <a href="{% url 'profile' %}" class="dropdown-item ">నా ప్రొఫైల్</a>
+                            </div>
+                        </div>
+                        <a href="{% url 'chatbot' %}" class="nav-item nav-link">చాట్బాట్</a>
+                    </div>
+                    
+                    <a href="{% url 'log_out' %}" class="btn btn-secondary py-2 px-4 ms-3">లాగ్ అవుట్</a>
+                </div>
+                
+            </nav>
+            
+            <div class="container-xxl py-5  hero-header mb-5">
+                
+            </div>
+            
+            
+        </div>
+        <!-- Navbar & Hero End -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{% static 'farmer/img/help.png' %}" alt=""> 
+                </div>
+                <div class="col-md-8">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="">
+                                <div class="card custom-card">
+                                    <div class="card-body custom-form">
+                                        <h2 class="card-title text-center mb-4">Ask a Query</h2>
+                                        <form action="{% url 'helpdesk' %}" method="post" class="needs-validation" id="queryForm">
+                                            {% csrf_token %}
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label for="name">మీ పేరు:</label>
+                                                    <input type="text" class="form-control" id="name" name="name" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="email">మీ ఇమెయిల్:</label>
+                                                    <input type="email" class="form-control" id="email" name="email" required>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label for="contactNumber">సంప్రదించడానికి నంబర్:</label>
+                                                    <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="queryType">ప్రశ్న రకం:</label>
+                                                    <select class="form-control" id="queryType" name="queryType" required>
+                                                        <option value="General">సాధారణ పరిచయం</option>
+                                                        <option value="Technical">తాంత్రిక సమస్య</option>
+                                                        <option value="CropInfo">పురుగు సమాచారం</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group row">
+                                                <div class="col-md-6">
+                                                    <label for="crop">పురుగు రకం:</label>
+                                                    <input type="text" class="form-control" id="crop" name="crop" required>
+                                                    <div class="invalid-feedback">దయచేసి పురుగు సమాచారం నమోదు చేయండి.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="querySubject">ప్రశ్న విషయం:</label>
+                                                    <select class="form-control" id="querySubject" name="querySubject" required>
+                                                        <option value="PestControl">పురుగు నియంత్రణ</option>
+                                                        <option value="Fertilization">ఎరువు పోషణ</option>
+                                                        <option value="Disease">పురుగు కీటం</option>
+                                                        <option value="Other">ఇతర</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <div class="invalid-feedback">దయచేసి మీ ప్రశ్నకు విషయాన్ని ఎంచుకోండి.</div>
+                                                <label for="issue">నిర్దిష్ట సమస్య:</label>
+                                                <textarea class="form-control" id="issue" name="issue" rows="2" pattern=".{150,}" title="కనిష్టము 150 అక్షరాలు అవసరం" required></textarea>
+                                                <span id="charCount">0</span> అక్షరాలు నమోదు చేయబడినవి (కనిష్టము 150).
+                                                <div class="invalid-feedback">దయచేసి మీ ప్రశ్నకు నిర్దిష్ట సమస్యను నమోదు చేయండి.</div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="location">స్థానం:</label>
+                                                <input type="text" class="form-control" id="location" name="location" required>
+                                                <small class="form-text text-muted">ప్రబంధాల కోసం మెరుగుపరచడానికి ఫారం సమర్పించే ముందు స్థానాన్ని అనుమతించండి.</small>
+                                                <div class="invalid-feedback">దయచేసి మీ స్థానాన్ని నమోదు చేయండి.</div>
+                                            </div>
+                                            
+                                            <input type="hidden" id="country" name="country">
+                                            <input type="hidden" id="state" name="state">
+                                            <input type="hidden" id="city" name="city">
+                                            <input type="hidden" id="pinCode" name="pinCode">
+                                            <input type="hidden" id="longitude" name="longitude">
+                                            <input type="hidden" id="latitude" name="latitude">
+                                            <input type="hidden" id="weatherCondition" name="weatherCondition">
+                                            
+                                            <button type="button" class="btn btn-secondary btn-block" id="getLocationBtn" onclick="return getLocation()">సబ్మిట్</button>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 mt-5">
+                <div class="content-title style1 mb-40">
+                    <h2 style="text-decoration: underline;">సామాన్యంగా అడిగిపెట్టిన ప్రశ్నలు</h2>
+                </div>
+                
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span>
+                                    <i class="las la-plus-circle plus"></i>
+                                    <i class="las la-minus-circle minus"></i>
+                                </span>
+                                సుస్తాయి వ్యవస్థిత వ్యవసాయ పద్ధతులును సమాచారం ఇవ్వగలరా?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="single-product-text">
+                                    <p>అవును, మేము సుస్తాయి వ్యవస్థిత వ్యవసాయ పద్ధతులలో మార్గదర్శన ఇవ్వడంలో నిపుణులు. మా వ్యవసాయ నిపుణులు ఎకో-స్నేహిత వ్యవసాయ పద్ధతులు, ఉపరితల సంరక్షణ, నీటి నిర్వహణ, మరియు మరిన్నిస్తారు. మా సంసాధనలను అన్వేషించండి మరియు వ్యక్తిగత సలహా కోసం సంప్రదించండి.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <span>
+                                    <i class="las la-plus-circle plus"></i>
+                                    <i class="las la-minus-circle minus"></i>
+                                </span>
+                                నాటురాల్‌గా సాధారణ పురుగుల నుండి నా పురుగులను ఎలా రక్షిస్తారు?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>సాంకేతిక వ్యవసాయంకోసం నాచురల్ పెస్ట్ కంట్రోల్ అత్యంత ఆవశ్యకం. మా నిపుణులు సూచించే స్వాభావిక శత్రువులు, సహచర రోపణ, మరియు స్వాభావిక కీటనాశనంలను ఉపయోగించడానికి సూచించిన మార్గదర్శకాలను అన్వేషించండి. హారామ్‌ఫ్రీ కీటనాశన మేరకు పరిశీలించండి.</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <span>
+                                    <i class="las la-plus-circle plus"></i>
+                                    <i class="las la-minus-circle minus"></i>
+                                </span>
+                                స్వాభావికంగా ఎక్కువ భూసారువును ఎలా మెరుగుపరచాలి?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="single-product-text">
+                                    <p>విజయవంత వ్యవసాయంకోసం భూసారువును పెంచడానికి ముఖ్యం. సాగు, అంగడి కర్ణలు వంటి స్వాభావిక ఆకర్షకాలను జోడించడం భూనిర్మాణను ధనికి చేరింది. వారసగా సంరచించడానికి మరియు స్వాభావిక రసాయనాలను ఉపయోగించడానికి భారీగా పరిమాణం ఉపయోగించడం అంగీకరించండి.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <span>
+                                    <i class="las la-plus-circle plus"></i>
+                                    <i class="las la-minus-circle minus"></i>
+                                </span>
+                                సంసాధనాలను సురక్షితంగా కాపాడాలా?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="single-product-text">
+                                    <p>పరిమాణాలు తీవ్రంగా పరిశీలించడానికి అత్యంత ముఖ్యం. డ్రిప్ ఇరిగేషన్, వర్షాల సంచయం, మరియు భూసారు మానిటరింగ్ మార్గాలను పరిశీలించడం అత్యంత కీలకం. మా నిపుణులు మీ వ్యవసాయంకు అనుకూలంగా పనులు రూపొందించడానికి వివిధాంగా నిర్దేశించవచ్చు.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <span>
+                                    <i class="las la-plus-circle plus"></i>
+                                    <i class="las la-minus-circle minus"></i>
+                                </span>
+                                ఆర్గానిక్ వ్యవసాయ పద్ధతులకు మారు మార్గదర్శన ఇవ్వగలరా?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="single-product-text">
+                                    <p>ఆర్గానిక్ వ్యవసాయంకు మార్గదర్శన ఇవ్వడానికి జాగ్రత్తగా యోజన చేయాలి. మా నిపుణులు మీకు హంతక్కువ మార్గదర్శన, ఎరువు సిద్ధం, ప్రాణిక ఎండర్స్మెంట్, ప్రాకృతిక కీటనాశన విధులు, మరియు ఆర్గానిక్ సర్టిఫికేషన్ పొందడానికి పట్టిక తయారు చేసుకోవచ్చు. మా మార్గదర్శనతో సుస్తాయి మరియు ఆర్గానిక్ వ్యవసాయం దారికీలో మీ ప్రయాణం ప్రారంభించండి.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+        <script>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    alert("Geolocation is not supported by this browser.");
+                }
+            }
+            function showPosition(position) {
+                const locationData = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                };
+                // Set values for hidden fields
+                document.getElementById("latitude").value = locationData.latitude;
+                document.getElementById("longitude").value = locationData.longitude;
+                // Get weather condition
+                getWeatherCondition(locationData.latitude, locationData.longitude);
+                // Perform reverse geocoding using Google Maps Geocoding API
+                const geocoder = new google.maps.Geocoder();
+                const latlng = new google.maps.LatLng(locationData.latitude, locationData.longitude);
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            const addressDetails = {};
+                            // Loop through address components
+                            for (let i = 0; i < results[0].address_components.length; i++) {
+                                const component = results[0].address_components[i];
+                                const componentType = component.types[0];
+                                addressDetails[componentType] = component.long_name;
+                            }
+                            const formattedAddress = results[0].formatted_address;
+                            const placeId = results[0].place_id;
+                            console.log("Address Details:", addressDetails);
+                            console.log("Formatted Address:", formattedAddress);
+                            console.log("Place ID:", placeId);
+                            document.getElementById("country").value = addressDetails.country || '';
+                            document.getElementById("state").value = addressDetails.administrative_area_level_1 || '';
+                            document.getElementById("city").value = addressDetails.locality || '';
+                            document.getElementById("pinCode").value = addressDetails.postal_code || '';
+                            document.getElementById("queryForm").submit();
+                        } else {
+                            alert('No results found');
+                        }
+                    } else {
+                        alert('Geocoder failed due to: ' + status);
+                    }
+                });
+            }
+            async function getWeatherCondition(latitude, longitude) {
+                const apiKey = 'e226dd6fc74545c18a0f0fca5d7fb5d9';
+                const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+                try {
+                    const response = await fetch(apiUrl);
+                    const data = await response.json();
+                    if (response.ok) {
+                        const weatherCondition = data.weather[0].main;
+                        console.log("Weather Condition:", weatherCondition);
+                        
+                        document.getElementById("weatherCondition").value = weatherCondition;
+                    } else {
+                        console.error('Failed to fetch weather data:', data.message);
+                    }
+                } catch (error) {
+                    console.error('Error fetching weather data:', error);
+                }
+            }
+        </script>
+        
+        <!-- Full Screen Search Start -->
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if messages %}              
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <script>swal({
+            title: "Warning!",
+            text: "{{message}}",
+            icon: "warning",
+            button: "OK",
+        });
+    </script>
+    
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <script>swal({
+        title: "Info :)",
+        text: "{{message}}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>swal({
+    title: "Error :)",
+    text: "{{message}}",
+    icon: "error",
+    button: "OK",
+});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>swal({
+    title: "Success :)",
+    text: "{{message}}",
+    icon: "success",
+    button: "OK",
+});
+</script>
+{% endif %}              
+{% endfor %} 
+{% endif %}
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-primary text-white footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5 px-lg-5">
+        <div class="row gy-5 gx-4 pt-5">
+            <div class="col-12">
+                <h2 class="fw-bold text-white mb-4">అగ్రిటెక్‌ఫ్యూజన్</h2>
+            </div>
+            
+            <div class="col-lg-5 col-md-12">
+                <div class="row gy-5 g-4">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold text-white mb-4">షార్ట్‌కట్లు</h5>
+                        <a class="btn btn-link" href="">హోమ్</a>
+                        <a class="btn btn-link" href="">మాకు గురించి</a>
+                        <a class="btn btn-link" href="">మాకు సంప్రదించండి</a>
+                        <a class="btn btn-link" href="">ప్రభుత్వ అధికారులు</a>
+                        <a class="btn btn-link" href="">వ్యవసాయ నిపుణులు</a>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="fw-bold text-white mb-4">ఉపయోగకరమైన లింక్‌లు</h5>
+                        <a class="btn btn-link" href="">అడ్మిన్ లాగిన్</a>
+                        <a class="btn btn-link" href="">రైతు లాగిన్</a>
+                        <a class="btn btn-link" href="">రైతు నమోదు</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <h5 class="fw-bold text-white mb-4">సంప్రదించండి</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i> హైదరాబాద్, తెలంగాణ 500074, సిరిస్ రోడ్, ఎల్.బి నగర్ మెట్రో స్థానం స్తంభం నంబర్ A1662, స్నేహపురి కాలనీ, 2వ అంగడి</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i> 85558 87986</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i> info@codebook.in</p>
+            </div>
+            
+            <div class="col-md-6 col-lg-4 mt-lg-n5">
+                <div class="bg-light rounded" style="padding: 30px;">
+                    <img class="img-fluid animated zoomIn" src="{% static 'farmer/img/farmer3.webp' %}" alt="AgriTechFusion Hero Image">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container px-lg-5">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">AgriTechFusion</a>, All Right Reserved. 
+                    
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+<div id="languageSwitchBtn" onclick="showLanguageModal()">Lan</div>
+
+<div id="languageModal">
+    <a href="{% url 'helpdesk' %}"><div class="languageOption">En</div></a>
+    <a href="{% url 'helpdesk_hin' %}"><div class="languageOption">Hin</div></a>
+    <a href="{% url 'helpdesk_tel' %}"><div class="languageOption">Tel</div></a>
+    
+</div>
+
+<script>
+    function showLanguageModal() {
+        var modal = document.getElementById('languageModal');
+        modal.style.display = 'block';
+    }
+    
+    function selectLanguage(language) {
+        alert('Selected language: ' + language); 
+        var modal = document.getElementById('languageModal');
+        modal.style.display = 'none';
+    }
+    
+    
+    window.onclick = function(event) {
+        var modal = document.getElementById('languageModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'farmer/lib/wow/wow.min.js' %}"></script>
+
+<script src="{% static 'farmer/lib/easing/easing.min.js' %}"></script>
+
+<script src="{% static 'farmer/lib/waypoints/waypoints.min.js' %}"></script>
+
+<script src="{% static 'farmer/lib/counterup/counterup.min.js' %}"></script>
+
+<script src="{% static 'farmer/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+
+<!-- Template Javascript -->
+<script src="{% static 'farmer/js/main.js' %}"></script>
+
+</body>
+
+</html>

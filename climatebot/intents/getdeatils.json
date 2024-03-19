@@ -1,0 +1,189 @@
+{
+  "id": "c06d7388-975a-45ef-8810-4e9cb6b0cfea",
+  "name": "getdeatils",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "a0546d0c-5cdf-478c-b941-113be9b381cd",
+          "name": "Latitude",
+          "required": true,
+          "dataType": "@sys.number",
+          "value": "$Latitude",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "It seems we missed the latitude. Please provide the latitude value so I can continue with the forecast"
+            },
+            {
+              "lang": "en",
+              "value": "Looks like we forgot the latitude. Could you please share the latitude value to proceed?"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "2f222795-0435-4fd5-964f-58f7ba33ee9d",
+          "name": "Longitude",
+          "required": true,
+          "dataType": "@sys.number",
+          "value": "$Longitude",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Please provide the Longitude  value so I can continue with the forecast."
+            },
+            {
+              "lang": "en",
+              "value": "what is Longitude  value ?"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "7e4d2fed-4675-4989-8f21-a6937ef47cfb",
+          "name": "Date",
+          "required": true,
+          "dataType": "@sys.date",
+          "value": "$Date",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Thank you for sharing! To provide the most accurate forecast, could you kindly specify the date ?"
+            },
+            {
+              "lang": "en",
+              "value": "To enhance the forecast, could you please let me know the date you\u0027re looking at?"
+            },
+            {
+              "lang": "en",
+              "value": "date ?"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        },
+        {
+          "id": "976b3014-9ce3-4f01-aa38-7195b2250052",
+          "name": "Time",
+          "required": true,
+          "dataType": "@sys.date-time",
+          "value": "$Time",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "please enter Time"
+            },
+            {
+              "lang": "en",
+              "value": "Time ?"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        }
+      ],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "en",
+          "speech": [
+            "Below is your prediction result link. Please click to view the prediction."
+          ],
+          "condition": ""
+        },
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "image": {
+                        "src": {
+                          "rawUrl": "https://cdn-icons-png.freepik.com/128/9293/9293909.png?uid\u003dR78815113\u0026ga\u003dGA1.1.1283086406.1705758348\u0026semt\u003dais"
+                        }
+                      },
+                      "text": "Result Page",
+                      "link": "http://127.0.0.1:8000/user/result/?Latitude\u003d$Latitude.original\u0026Longitude\u003d$Longitude.original\u0026Date\u003d$Date.original\u0026Time\u003d$Time.original"
+                    }
+                  ]
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "en",
+          "condition": ""
+        },
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "value": "Lets start",
+                      "text": "Start again",
+                      "name": "start again",
+                      "image": {
+                        "src": {
+                          "rawUrl": "https://cdn-icons-png.freepik.com/128/9416/9416135.png?uid\u003dR78815113\u0026ga\u003dGA1.1.1283086406.1705758348\u0026semt\u003dais"
+                        }
+                      },
+                      "type": "button"
+                    }
+                  ]
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "en",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": [],
+  "endInteraction": true
+}

@@ -1,0 +1,38 @@
+{
+  "id": "0afb7cb3-4fcb-42d1-8bc4-34f62293163f",
+  "name": "userready",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "en",
+          "speech": [
+            "could you please provide the latitude for the location you\u0027re interested in?",
+            "I\u0027ll need the latitude of the location you\u0027re interested in. Could you please provide it",
+            "Before we continue, I\u0027ll need the latitude for the location you have in mind. Could you share that with me?",
+            "Before we dive into temperature forecasts, can you let me know the latitude for the specific location you\u0027re curious about?"
+          ],
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

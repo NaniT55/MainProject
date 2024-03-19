@@ -1,0 +1,276 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="{% static 'admin/images/logo/logo.png' %}" rel="icon">  
+    <title>Admin Dashboard</title>
+    <link href="{% static 'admin/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'admin/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'admin/css/ruang-admin.min.css' %}" rel="stylesheet" type="text/css">
+    <style>
+        
+    </style>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+                <div class="sidebar-brand-icon">
+                    <img src="{% static 'admin/img/logo/logo2.png' %}">
+                </div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'admin_dashboard' %}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+                </li>
+                <hr class="sidebar-divider">
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+                    aria-expanded="true" aria-controls="collapseBootstrap">
+                    <i class="fas fa-user"></i>
+                    
+                    <span>Farmer Management</span>
+                </a>
+                <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{% url 'farmer_details' %}">Farmer Details</a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
+            aria-expanded="true" aria-controls="collapseBootstrap">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Crop Prediction</span>
+        </a>
+        <div id="collapseBootstrap2" class="collapse " aria-labelledby="headingBootstrap"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item " href="{% url 'upload_dataset' %}">Upload Dataset</a>
+            <a class="collapse-item " href="{% url 'model_train' %}">Model Training</a>
+            <a class="collapse-item " href="{% url 'graph' %}">Graph</a>
+        </div>
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap3"
+    aria-expanded="true" aria-controls="collapseBootstrap">
+    <i class="fas fa-comments"></i>
+    <span>Feedback Management</span>
+</a>
+<div id="collapseBootstrap3" class="collapse show" aria-labelledby="headingBootstrap"
+data-parent="#accordionSidebar">
+<div class="bg-white py-2 collapse-inner rounded">
+    <a class="collapse-item " href="{% url 'admin_feedback' %}">Feedback</a>
+    <a class="collapse-item " href="{% url 'admin_sentiment' %}">Sentiment Analysis</a>
+    <a class="collapse-item active" href="{% url 'admin_sentiment' %}">Sentiment Graph</a>
+</div>
+</div>
+</li>
+
+<hr class="sidebar-divider">
+</ul>
+
+<!-- Sidebar -->
+<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+            <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+            <ul class="navbar-nav ml-auto">
+                <div class="topbar-divider d-none d-sm-block"></div>
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img class="img-profile rounded-circle" src="{% static 'admin/img/boy.png' %}" style="max-width: 60px">
+                    <span class="ml-2 d-none d-lg-inline text-white small">Admin</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    
+                    
+                    <div class="dropdown-divider"></div>
+                    <a id="logoutLink" class="dropdown-item" href="{% url 'adminlogin' %}">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- Topbar -->
+    
+    <!-- Container Fluid-->
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Sentiment Graph</h1>
+            <ol class="breadcrumb">
+                <!-- <li class="breadcrumb-item"><a href="#">Home</a></li> -->
+                <li class="breadcrumb-item active" aria-current="page">/ Sentiment Graph</li>
+            </ol>
+        </div>
+        
+        <div class="content-wrapper">
+            
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 style="text-align: center;">Sentiment Analysis</h2>
+                        <div class="container-fluid">
+                            <div class="col-sm-12 col-xl-12">
+                                <div class="rounded h-100 p-4" style="background-color: none;">
+                                    <h6 class="mb-4">Emoji Sentiment Chart</h6>
+                                    <canvas id="emoji-chart"></canvas>
+                                </div>
+                            </div>
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var ratingCounts = {{ rating_counts|safe }};
+                                    
+                                    var ctx = document.getElementById('emoji-chart').getContext('2d');
+                                    var myChart = new Chart(ctx, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['😢', '😐', '😊', '😄', '🌟'],
+                                            datasets: [{
+                                                label: 'Rating Counts',
+                                                data: Object.values(ratingCounts),  // Extract counts from the dictionary
+                                                backgroundColor: [
+                                                'rgba(255, 99, 132, 0.7)',
+                                                'rgba(255, 255, 0, 0.7)',
+                                                'rgba(0, 255, 0, 0.7)',
+                                                'rgba(0, 0, 255, 0.7)',
+                                                'rgba(255, 0, 255, 0.7)',
+                                                ],
+                                                borderColor: [
+                                                'rgba(255, 99, 132, 1)',
+                                                'rgba(255, 255, 0, 1)',
+                                                'rgba(0, 255, 0, 1)',
+                                                'rgba(0, 0, 255, 1)',
+                                                'rgba(255, 0, 255, 1)',
+                                                ],
+                                                borderWidth: 2
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true,
+                                                    stepSize: 1,
+                                                    precision: 0,
+                                                    ticks: {
+                                                        stepSize: 1
+                                                    }
+                                                },
+                                                x: {
+                                                    grid: {
+                                                        display: false
+                                                    }
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    display: false
+                                                }
+                                            }
+                                        }
+                                    });
+                                });
+                            </script>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+        </div>  
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if messages %}              
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <script>swal({
+            title: "Warning!",
+            text: "{{message}}",
+            icon: "warning",
+            button: "OK",
+        });
+    </script>
+    
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <script>swal({
+        title: "Info :)",
+        text: "{{message}}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>swal({
+    title: "Error :)",
+    text: "{{message}}",
+    icon: "error",
+    button: "OK",
+});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>swal({
+    title: "Success :)",
+    text: "{{message}}",
+    icon: "success",
+    button: "OK",
+});
+</script>
+{% endif %}              
+{% endfor %} 
+{% endif %}
+
+
+
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>&copy Copyright AgriTechFusion
+                
+            </span>
+        </div>
+    </div>
+</footer>
+<!-- Footer -->
+</div>
+</div>
+
+<!-- Scroll to top -->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+
+<script src="{% static 'admin/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'admin/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'admin/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'admin/js/ruang-admin.min.js' %}"></script>
+<script src="{% static 'admin/vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'admin/js/demo/chart-area-demo.js' %}"></script>  
+</body>
+
+</html>

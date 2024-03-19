@@ -1,0 +1,353 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <title>Dashboard</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    
+    <!-- Favicons -->
+    <link href="{% static 'expert/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'expert/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'expert/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'expert/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'expert/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'expert/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+    <link href="{% static 'expert/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+    <link href="{% static 'expert/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'expert/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+    
+    
+    <!-- Template Main CSS File -->
+    <link href="{% static 'expert/css/style.css' %}" rel="stylesheet">
+    
+    <style>
+         .table {
+        width: 100%;
+        margin-top: 1rem;
+        border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .table thead th {
+        background-color: #2b2727;
+        color: #fff;
+        padding: 1.25rem;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 123, 255, 0.1);
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-primary,
+    .btn-danger {
+        padding: 0.75rem 1.5rem;
+        font-size: 14px;
+        margin-right: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+        background-color: #36c;
+        border-color: #36c;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-danger {
+        background-color: #d9534f;
+        border-color: #d9534f;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover,
+    .btn-danger:hover {
+        filter: brightness(90%);
+        transform: translateY(-2px);
+    }
+    </style>
+    </head>
+    
+    <body>
+        
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
+            
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="admin-index.html" class="logo d-flex align-items-center">
+                    <img src="assets/img/logo.png" alt="">
+                    <span class="d-none d-lg-block">Agricultural Expert</span>
+                </a>
+                <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
+            
+            <nav class="header-nav ms-auto">
+                <ul class="d-flex align-items-center">
+                    <li class="nav-item dropdown pe-3">
+                        
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                            <img src="{% static 'expert/img/logo.png' %}" alt="">
+                            
+                            <span class="d-none d-md-block dropdown-toggle ps-2">Agricultural Expert</span>
+                        </a><!-- End Profile Iamge Icon -->
+                        
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="{% url 'expertlogin' %}">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Sign Out</span>
+                                </a>
+                            </li>
+                            
+                        </ul><!-- End Profile Dropdown Items -->
+                    </li><!-- End Profile Nav -->
+                    
+                </ul>
+            </nav><!-- End Icons Navigation -->
+            
+        </header><!-- End Header -->
+        
+        <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar">
+            
+            <ul class="sidebar-nav" id="sidebar-nav">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'expert_dashboard' %}">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li><!-- End Dashboard Nav -->
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-question"></i><span>Expert/Help Desk</span></i></i>
+                    </a>
+                    <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                        <li >
+                            <a href="{% url 'expert_helpdesk' %}">
+                                <i class="bi bi-circle"></i><span>Farmer Queries</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End parking Management Nav -->
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-chat-dots"></i><span>Responses</span></i></i>
+                    </a>
+                    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{% url 'expert_view_responses' %}">
+                                <i class="bi bi-circle"></i><span>Veiw Responses</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav2" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-calendar"></i><span>Appointments</span></i></i>
+                    </a>
+                    <ul id="forms-nav2" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{% url 'pending_appionments' %}" class="active">
+                                <i class="bi bi-circle"></i><span>Pending Appointments</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'view_appiontment' %}">
+                                <i class="bi bi-circle"></i><span>View Appointments</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Feedback Nav -->
+            </aside><!-- End Sidebar-->
+            
+            <main id="main" class="main">
+                
+                <div class="pagetitle">
+                    <h1>Dashboard</h1>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'expert_dashboard' %}">Home</a></li>
+                            <li class="breadcrumb-item active">Pending Appointments</li>
+                        </ol>
+                    </nav>
+                </div><!-- End Page Title -->
+                
+                <section class="section overflow-auto">
+                    <div class="col-12">
+                        <div class="card-body">
+                            <h5 class="card-title">Pending Appointments</h5>
+                            
+                            <!-- Dark Table -->
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Query Subject</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for appointment in pending_appionments %}
+                                    <tr class="text-center">
+                                        <th scope="row">{{ forloop.counter }}</th>
+                                        <td>{{ appointment.name }}</td>
+                                        <td>{{ appointment.address }}</td>
+                                        <td>{{ appointment.appointment_date }}</td>
+                                        <td>{{ appointment.query_subject }}</td>
+                                        <td>
+                                            <button class="btn btn-md btn-primary" type="button">
+                                                <a href="{% url 'accept_appointment' appiontment_id=appointment.id %}" class="text-white">Accept</a>
+                                            </button>
+                                            <button class="btn btn-md btn-danger" type="button">
+                                                <a href="{% url 'delete_appointment' appiontment_id=appointment.id %}" class="text-white">Reject</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            
+                            <div class="pagination justify-content-center">
+                                <ul class="pagination">
+                                    {% if pending_appionments.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=1" aria-label="First">
+                                                &laquo;&laquo;
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ pending_appionments.previous_page_number }}" aria-label="Previous">
+                                                &laquo;
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                            
+                                    <li class="page-item disabled">
+                                        <span class="page-link">
+                                            Page {{ pending_appionments.number }} of {{ pending_appionments.paginator.num_pages }}
+                                        </span>
+                                    </li>
+                            
+                                    {% if pending_appionments.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ pending_appionments.next_page_number }}" aria-label="Next">
+                                                &raquo;
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ pending_appionments.paginator.num_pages }}" aria-label="Last">
+                                                &raquo;&raquo;
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!-- End Dark Table -->
+                            
+                        </div>
+                    </div>
+                </section>
+                
+            </main><!-- End #main -->
+            
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      {% if messages %}              
+      {% for message in messages %}
+      {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+      <script>swal({
+          title: "Warning!",
+          text: "{{message}}",
+          icon: "warning",
+          button: "OK",
+      });
+  </script>
+  
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+  <script>swal({
+      title: "Info :)",
+      text: "{{message}}",
+      icon: "info",
+      button: "OK",
+  });
+  </script>
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <script>swal({
+  title: "Error :)",
+  text: "{{message}}",
+  icon: "error",
+  button: "OK",
+  });
+  </script>
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <script>swal({
+  title: "Success :)",
+  text: "{{message}}",
+  icon: "success",
+  button: "OK",
+  });
+  </script>
+  {% endif %}              
+  {% endfor %} 
+  {% endif %}
+      
+            <!-- ======= Footer ======= -->
+            <footer id="footer" class="footer">
+                <div class="copyright">
+                    
+                </div>
+                <div class="credits">
+                    
+                </div>
+            </footer><!-- End Footer -->
+            
+            <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+            
+            <!-- Vendor JS Files -->
+            <script src="{% static 'expert/vendor/apexcharts/apexcharts.min.js' %}"></script>
+            <script src="{% static 'expert/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+            <script src="{% static 'expert/vendor/chart.js/chart.umd.js' %}"></script>
+            <script src="{% static 'expert/vendor/echarts/echarts.min.js' %}"></script>
+            <script src="{% static 'expert/vendor/quill/quill.min.js' %}"></script>
+            <script src="{% static 'expert/vendor/simple-datatables/simple-datatables.js' %}"></script>
+            <script src="{% static 'expert/vendor/tinymce/tinymce.min.js' %}"></script>
+            <script src="{% static 'expert/vendor/php-email-form/validate.js' %}"></script>
+            
+            <!-- Template Main JS File -->
+            <script src="{% static 'expert/js/main.js' %}"></script>
+            
+            
+        </body>
+        
+        </html> 

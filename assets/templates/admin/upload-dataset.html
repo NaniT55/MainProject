@@ -1,0 +1,332 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="{% static 'admin/images/logo/logo.png' %}" rel="icon">  
+    <title>Admin Dashboard</title>
+    <link href="{% static 'admin/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'admin/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'admin/css/ruang-admin.min.css' %}" rel="stylesheet" type="text/css">
+    <style>
+        .custom-file-input::-webkit-file-upload-button {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .custom-file-input::-webkit-file-upload-button:hover {
+            background-color: #0069d9;
+        }
+        
+        .custom-file-input::-webkit-file-upload-button:active {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        
+        .custom-file-input::-webkit-file-upload-button:focus {
+            outline: none;
+        }
+        
+        .custom-file-input::before {
+            content: 'Select CSV or Excel file to upload';
+            color: #999;
+            display: inline-block;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            margin-right: 10px;
+        }
+        
+        .custom-file-input:focus::before {
+            border-color: #007bff;
+        }
+        
+        .custom-file-input:active::before {
+            background-color: #f8f8f8;
+        }
+        
+        .custom-file-input::after {
+            content: 'Browse';
+            color: #fff;
+            display: inline-block;
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .custom-file-input:focus::after {
+            background-color: #0069d9;
+        }
+        
+        .custom-file-input:active::after {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        
+        .custom-file-input:focus::-webkit-file-upload-button {
+            outline: none;
+        }
+        
+        .custom-file-input::-webkit-file-upload-button[disabled] {
+            cursor: not-allowed;
+            background-color: #ddd;
+            border-color: #ddd;
+        }
+        
+        .custom-file-input:disabled::before {
+            background-color: #f8f8f8;
+            color: #aaa;
+            border-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .custom-file-input:disabled::after {
+            background-color: #ddd;
+            border-color: #ddd;
+            color: #aaa;
+            cursor: not-allowed;
+        }
+        
+        .submit-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .submit-button:hover {
+            background-color: #0069d9;
+        }
+        
+        .submit-button:active {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+                <div class="sidebar-brand-icon">
+                    <img src="{% static 'admin/img/logo/logo2.png' %}">
+                </div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'admin_dashboard' %}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+                </li>
+                <hr class="sidebar-divider">
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+                    aria-expanded="true" aria-controls="collapseBootstrap">
+                    <i class="fas fa-user"></i>
+                    
+                    <span>Farmer Management</span>
+                </a>
+                <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{% url 'farmer_details' %}">Farmer Details</a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
+            aria-expanded="true" aria-controls="collapseBootstrap">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Crop Prediction</span>
+        </a>
+        <div id="collapseBootstrap2" class="collapse show" aria-labelledby="headingBootstrap"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item active" href="{% url 'upload_dataset' %}">Upload Dataset</a>
+            <a class="collapse-item" href="{% url 'model_train' %}">Model Training</a>
+            <a class="collapse-item" href="{% url 'graph' %}">Graph</a>
+        </div>
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap3"
+    aria-expanded="true" aria-controls="collapseBootstrap">
+    <i class="fas fa-comments"></i>
+    <span>Feedback Management</span>
+</a>
+<div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap"
+data-parent="#accordionSidebar">
+<div class="bg-white py-2 collapse-inner rounded">
+    <a class="collapse-item" href="{% url 'admin_feedback' %}">Feedback</a>
+    <a class="collapse-item" href="{% url 'admin_sentiment' %}">Sentiment Analysis</a>
+    <a class="collapse-item" href="{% url 'admin_sentiment_graph' %}">Sentiment Graph</a>
+</div>
+</div>
+</li>
+
+<hr class="sidebar-divider">
+</ul>
+
+<!-- Sidebar -->
+<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+            <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+            <ul class="navbar-nav ml-auto">
+                <div class="topbar-divider d-none d-sm-block"></div>
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img class="img-profile rounded-circle" src="{% static 'admin/img/boy.png' %}" style="max-width: 60px">
+                    <span class="ml-2 d-none d-lg-inline text-white small">Admin</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    
+                    
+                    <div class="dropdown-divider"></div>
+                    <a id="logoutLink" class="dropdown-item" href="{% url 'adminlogin' %}">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Logout
+          </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- Topbar -->
+    
+    <!-- Container Fluid-->
+    <div class="container-fluid" id="container-wrapper">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Upload Dataset</h1>
+            <ol class="breadcrumb">
+                <!-- <li class="breadcrumb-item"><a href="#">Home</a></li> -->
+                <li class="breadcrumb-item active" aria-current="page">/ Upload Dataset</li>
+            </ol>
+        </div>
+        
+        <div class="content-wrapper mb-5">
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center mb-4">Upload Data Set</h5>
+                                <form method="POST" action="{% url 'upload_dataset' %}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="fileInput" class="form-label">Choose file:</label>
+                                        <input type="file" class="form-control" id="fileInput" name="file" accept="image/*">
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-block submit-button">Submit</button>
+                                </form>
+                                
+                                <label for="fileInput" class="form-label mt-3">Upload The Images </label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if messages %}              
+        {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <script>swal({
+            title: "Warning!",
+            text: "{{message}}",
+            icon: "warning",
+            button: "OK",
+        });
+    </script>
+    
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <script>swal({
+        title: "Info :)",
+        text: "{{message}}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>swal({
+    title: "Error :)",
+    text: "{{message}}",
+    icon: "error",
+    button: "OK",
+});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>swal({
+    title: "Success :)",
+    text: "{{message}}",
+    icon: "success",
+    button: "OK",
+});
+</script>
+{% endif %}              
+{% endfor %} 
+{% endif %}
+
+
+
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>&copy Copyright AgriTechFusion
+                
+            </span>
+        </div>
+    </div>
+</footer>
+<!-- Footer -->
+</div>
+</div>
+
+<!-- Scroll to top -->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+
+<script src="{% static 'admin/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'admin/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'admin/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'admin/js/ruang-admin.min.js' %}"></script>
+<script src="{% static 'admin/vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'admin/js/demo/chart-area-demo.js' %}"></script>  
+</body>
+
+</html>

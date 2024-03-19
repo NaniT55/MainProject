@@ -1,0 +1,213 @@
+[
+  {
+    "id": "d6c63f9c-f38b-4753-b089-bd589ed223d5",
+    "data": [
+      {
+        "text": "01:54",
+        "meta": "@sys.date-time",
+        "alias": "Time",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "c23fd457-2530-4c36-bd68-34e5ee4c3d40",
+    "data": [
+      {
+        "text": "1:0",
+        "meta": "@sys.date-time",
+        "alias": "Time",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "4360592a-0c9f-4c07-bb80-3d07c2a9c199",
+    "data": [
+      {
+        "text": "20:56",
+        "meta": "@sys.date-time",
+        "alias": "Time",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "517fe279-7216-4fa8-b716-7938410f1a57",
+    "data": [
+      {
+        "text": "01:00",
+        "meta": "@sys.date-time",
+        "alias": "Time",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "81c0426f-d2b8-4f2e-996d-b4dc7ddcba4f",
+    "data": [
+      {
+        "text": "23/01/2023",
+        "meta": "@sys.date",
+        "alias": "Date",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "e79f7aa0-eb2c-4f80-a291-f4f39ab55b33",
+    "data": [
+      {
+        "text": "21/01/23",
+        "meta": "@sys.date",
+        "alias": "Date",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "80c8a5ed-5930-4e4a-99f1-ce372860c318",
+    "data": [
+      {
+        "text": "2024-01-22",
+        "meta": "@sys.date",
+        "alias": "Date",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "a88af787-df68-4b39-ae2e-75191199ed99",
+    "data": [
+      {
+        "text": "longitude value is ",
+        "userDefined": false
+      },
+      {
+        "text": "12.98787",
+        "meta": "@sys.number",
+        "alias": "Longitude",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "3e73615b-c8c2-4b2a-a585-a0388ae68261",
+    "data": [
+      {
+        "text": "-76.87878",
+        "meta": "@sys.number",
+        "alias": "Longitude",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "477b67ba-ad48-4fb4-962d-8da2fcfbe0e8",
+    "data": [
+      {
+        "text": "longitude is ",
+        "userDefined": false
+      },
+      {
+        "text": "-90.765565",
+        "meta": "@sys.number",
+        "alias": "Longitude",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "b8081cce-c794-4095-b3be-092164c7141c",
+    "data": [
+      {
+        "text": "latitude value is ",
+        "userDefined": false
+      },
+      {
+        "text": "12.878787",
+        "meta": "@sys.number",
+        "alias": "Latitude",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "6eb474ec-c49e-45d5-ba38-98b68a9022c4",
+    "data": [
+      {
+        "text": "latitude is ",
+        "userDefined": false
+      },
+      {
+        "text": "56.7878",
+        "meta": "@sys.number",
+        "alias": "Latitude",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  },
+  {
+    "id": "4bac369d-9021-49a2-9a88-dffa07be897c",
+    "data": [
+      {
+        "text": "12.9898989",
+        "meta": "@sys.number",
+        "alias": "Latitude",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "lang": "en",
+    "updated": 0
+  }
+]

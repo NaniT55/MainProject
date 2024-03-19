@@ -1,0 +1,62 @@
+{
+  "id": "bdacd77f-17a8-4ea8-9f2b-0e631a7c3364",
+  "name": "Welcome",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.welcome",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "accessibilityText": "Climate Bot",
+                  "type": "image",
+                  "width": 200.0,
+                  "rawUrl": "https://img.freepik.com/free-photo/anthropomorphic-robot-indoors_23-2150405615.jpg?t\u003dst\u003d1705909414~exp\u003d1705913014~hmac\u003d24f05dc0ef8b36e8ca1b04178c5cee28c9e040654e4031a3192351c450af0273\u0026w\u003d1060",
+                  "height": 200.0
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "en",
+          "condition": ""
+        },
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "en",
+          "speech": [
+            "\"Hi! I\u0027m ClimateBot, your eco-friendly assistant. What\u0027s your name?\"",
+            "\"Welcome! I\u0027m ClimateBot, your go-to for green living tips. May I know your name?\"",
+            "\"Hey there! I\u0027m ClimateBot, your guide to a greener lifestyle. What\u0027s your name, friend?\"",
+            "\"Greetings! I\u0027m ClimateBot, your eco-companion. What\u0027s your name? Feel free to share!\""
+          ],
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "WELCOME"
+    }
+  ],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

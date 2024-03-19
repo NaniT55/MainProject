@@ -1,0 +1,111 @@
+{
+  "id": "c855f04d-4296-4f7e-bb5a-ab3861e1c8cc",
+  "name": "username",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "495b2f29-1465-496b-970f-7d5428b37c14",
+          "name": "person",
+          "required": true,
+          "dataType": "@sys.person",
+          "value": "$person",
+          "defaultValue": "",
+          "isList": false,
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Hey there! I didn\u0027t catch your name. Could you remind me? 🤔"
+            },
+            {
+              "lang": "en",
+              "value": "I\u0027m here to assist, but I don\u0027t know your name yet. Mind telling me what you go by? 😊"
+            },
+            {
+              "lang": "en",
+              "value": "Before we proceed, could you let me know your name? 🌟"
+            },
+            {
+              "lang": "en",
+              "value": "but I need to know who I\u0027m chatting with. What\u0027s your name? 🌟"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": []
+        }
+      ],
+      "messages": [
+        {
+          "type": "0",
+          "title": "",
+          "textToSpeech": "",
+          "lang": "en",
+          "speech": [
+            "Hello $person ! It\u0027s great to know your name. Are you ready to dive into our conversation?",
+            "Nice to meet you, $person! Ready to explore the world of eco-friendly living together?",
+            "Great to have you here, $person! Ready to chat about climate action?",
+            "Hi $person! Your name is fantastic! Ready to engage in a discussion about temperature prediction ?",
+            "Nice to meet you, $person! I\u0027m here for temperature predictions.Are you ready ?"
+          ],
+          "condition": ""
+        },
+        {
+          "type": "4",
+          "title": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "options": [
+                    {
+                      "type": "button",
+                      "image": {
+                        "src": {
+                          "rawUrl": "https://img.freepik.com/free-photo/3d-rendering-hand-showing-thumbs-up_23-2150896494.jpg?t\u003dst\u003d1705910594~exp\u003d1705914194~hmac\u003dea9e379c5c9d5e8ee1a6dd1c570c7b03e7e154bf324e7fc9d9f50aabeb1d59cb\u0026w\u003d826"
+                        }
+                      },
+                      "value": "Yes",
+                      "text": "Yes",
+                      "name": "Yes"
+                    },
+                    {
+                      "type": "button",
+                      "text": "No",
+                      "image": {
+                        "src": {
+                          "rawUrl": "https://cdn-icons-png.freepik.com/128/2190/2190577.png?uid\u003dR78815113\u0026ga\u003dGA1.1.1283086406.1705758348\u0026semt\u003dais"
+                        }
+                      },
+                      "value": "No",
+                      "name": "No"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          },
+          "textToSpeech": "",
+          "lang": "en",
+          "condition": ""
+        }
+      ],
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

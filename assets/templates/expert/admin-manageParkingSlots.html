@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Manage parking</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.5.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="admin-index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Admin</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'expertlogin' %}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/admin-index.html">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-p-circle"></i><span>Parking Management</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/admin-addParkingSlot.html"  >
+              <i class="bi bi-circle"></i><span>Add Parking Slots</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/admin-manageParkingSlots.html" class="active">
+              <i class="bi bi-circle"></i><span>Manage Parking Slots</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End parking Management Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-display"></i><span>Feedback Management</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{% url 'accept_appointment' %}">
+              <i class="bi bi-circle"></i><span>Veiw Feedbacks</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/admin-feedbackAnalysis.html">
+              <i class="bi bi-circle"></i><span>Feedback Analysis</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Feedback Nav -->
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Manage parking slots</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="admin-index.html">Parking Management</a></li>
+          <li class="breadcrumb-item active">Manage-parking-slots</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="">
+        <div class="card-body">
+          <h5 class="card-title">Manage Parking Slots</h5>
+
+          <!-- Table with hoverable rows -->
+          <table class="table table-hover">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">Slot Number</th>
+                <th scope="col">Location Name</th>
+                <th scope="col">City Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total vehicles</th>
+                <th scope="col">Total Slots</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <th scope="row">#345</th>
+                <td>Inorbit Mall</td>
+                <td>Hyderabad</td>
+                <td>2022-05-25</td>
+                <td>56</td>
+                <td>30</td>
+                <td><button class="btn btn-sm btn-primary"><a href="admin-parkingupdate.html" class="text-light">Update</a></button></td>
+              </tr>
+              <tr>
+                <th scope="row">#543</th>
+                <td>Decathlon</td>
+                <td>Hyderabad</td>
+                <td>2022-06-25</td>
+                <td>35</td>
+                <td>35</td>
+                <td><button class="btn btn-sm btn-primary"><a href="admin-parkingupdate.html" class="text-light">Update</a></button></td>
+              </tr>
+              <tr>
+                <th scope="row">#567</th>
+                <td>CMR Mall</td>
+                <td>Vizag</td>
+                <td>2022-09-26</td>
+                <td>43</td>
+                <td>76</td>
+                <td><button class="btn btn-sm btn-primary"><a href="admin-parkingupdate.html" class="text-light">Update</a></button></td>
+              </tr>
+              <tr>
+                <th scope="row">#675</th>
+                <td>Square Mall</td>
+                <td>Vijayawada</td>
+                <td>2022-06-25</td>
+                <td>56</td>
+                <td>98</td>
+                <td><button class="btn btn-sm btn-primary"><a href="admin-parkingupdate.html" class="text-light">Update</a></button></td>
+              </tr>
+              <tr>
+                <th scope="row">#777</th>
+                <td>CMR Mall</td>
+                <td>Hyderabad</td>
+                <td>2022-06-25</td>
+                <td>76</td>
+                <td>35</td>
+                <td><button class="btn btn-sm btn-primary"><a href="admin-parkingupdate.html" class="text-light">Update</a></button></td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- End Table with hoverable rows -->
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      
+    </div>
+    <div class="credits">
+      
+    </div>
+  </footer><!-- End Footer -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
