@@ -1,9 +1,11 @@
 absl-py==2.0.0
+-e git+https://github.com/NaniT55/MainProject.git@8170cef526a1ee5efb410e734ca94b23f97fe65e#egg=Agritech
 asgiref==3.7.2
 astunparse==1.6.3
 cachetools==5.3.2
 certifi==2023.11.17
 charset-normalizer==3.3.2
+dj-database-url==2.1.0
 Django==5.0.1
 flatbuffers==23.5.26
 gast==0.5.4
@@ -29,6 +31,7 @@ pillow==10.2.0
 protobuf==4.23.4
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
+python-dotenv==1.0.1
 requests==2.31.0
 requests-oauthlib==1.3.1
 rsa==4.9
@@ -46,7 +49,3 @@ tzdata==2023.4
 urllib3==2.1.0
 Werkzeug==3.0.1
 wrapt==1.14.1
-
-
-
--e .
